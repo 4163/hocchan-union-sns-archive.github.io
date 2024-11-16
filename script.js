@@ -207,34 +207,153 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  // Updated touch event listeners
-  window.addEventListener("touchstart", (e) => {
-    if (window.scrollY === 0) {
-      startY = e.touches[0].clientY;
-      isSwipingDown = true;
-    }
+  document.querySelector('.mobile-nav a[href="#top"]').addEventListener('click', function (e) {
+    e.preventDefault();
+    smoothScrollTo(document.querySelector('#top'));
   });
 
-  window.addEventListener("touchmove", (e) => {
-    if (window.scrollY === 0) {
-      if (isSwipingDown && e.touches[0].clientY > startY) {
-        e.preventDefault();  // Prevent pull-to-refresh when at the top
+  document.querySelector('.mobile-nav a[href="#bottom"]').addEventListener('click', function (e) {
+    e.preventDefault();
+    smoothScrollTo(document.querySelector('#bottom'));
+  });
+
+  document.querySelector('.mobile-nav .random-mobile').addEventListener('click', function (e) {
+    e.preventDefault();
+    const randomPostProfileImage = getRandomPostProfileWithImage();
+    smoothScrollToWithHeaderAdjustment(randomPostProfileImage);
+  });
+
+  document.querySelector('.top').addEventListener('click', function (e) {
+    e.preventDefault();
+    smoothScrollTo(document.querySelector('#top'));
+  });
+
+  document.querySelector('.bottom').addEventListener('click', function (e) {
+    e.preventDefault();
+    smoothScrollTo(document.querySelector('#bottom'));
+  });
+
+  document.querySelector('.random').addEventListener('click', function (e) {
+    e.preventDefault();
+    console.log("Non-mobile random button clicked");
+
+    if (buttonClickLock) return;
+    buttonClickLock = true;
+
+    lockState.enable();
+    disableButtons();
+
+    lockState.disable();
+    enableButtons();
+    buttonClickLock = false;
+
+    applyMobileNavStylesIfRequired();
+
+    const randomPostProfileImage = getRandomPostProfileWithImage();
+    smoothScrollToWithHeaderAdjustment(randomPostProfileImage);
+  });
+
+  document.querySelector('a.random-mobile').addEventListener('click', function (e) {
+    e.preventDefault();
+    console.log("Mobile random button clicked");
+
+    if (buttonClickLock) {
+      console.log("Button click locked, ignoring further clicks.");
+      return;
+    }
+    buttonClickLock = true;
+
+    lockState.enable();
+    disableButtons();
+
+    setTimeout(() => {
+      lockState.disable();
+      enableButtons();
+      buttonClickLock = false;
+
+      // New logic: Reset opacity to 1 and adjust header position after 500ms
+      mobileNav.style.opacity = '1';
+      if (headerFollow) {
+        headerFollow.style.transform = `translateY(-${headerFollow.offsetHeight}px)`;
       }
-    }
+
+      console.log("Button click unlocked after 500ms.");
+    }, 500);
+
+    applyMobileNavStylesIfRequired();
+
+    const randomPostProfileImage = getRandomPostProfileWithImage();
+    smoothScrollToWithHeaderAdjustment(randomPostProfileImage);
   });
 
-  window.addEventListener("touchend", (e) => {
-    if (isSwipingDown && !isRefreshing) {
-      isRefreshing = true;
-      refreshDiv.style.opacity = "1";
-      refreshImg.style.animation = "spin 1s linear infinite";
-      refreshDiv.style.transition = "opacity 0.3s ease-out";
-
-      setTimeout(() => {
-        refreshDiv.style.opacity = "0";
-        refreshImg.style.animation = "";
-        isRefreshing = false;
-      }, 3000);
-    }
+  document.querySelector('.header-follow').addEventListener('click', function () {
+    window.scrollTo(0, 0);
   });
+
+  if (mediaQuery.matches) {
+    window.addEventListener("touchstart", (e) => {
+      if (window.scrollY === 0) {
+        startY = e.touches[0].clientY;
+        isSwipingDown = true;
+      }
+    });
+
+    window.addEventListener("touchmove", (e) => {
+      if (isSwipingDown && !isRefreshing) {
+        const currentY = e.touches[0].clientY;
+        const pullDistance = currentY - startY;
+
+        if (pullDistance > 0) {
+          e.preventDefault();
+          spacerDiv.style.height = `${Math.min(pullDistance, maxSpacerHeight)}px`;
+
+          refreshDiv.style.display = window.scrollY === 0 ? 'block' : 'none';
+
+          if (pullDistance >= maxSpacerHeight) {
+            refreshImg.style.transition = 'transform 0.3s ease';
+            refreshImg.style.transform = 'rotate(180deg)';
+          } else {
+            refreshImg.style.transform = 'rotate(0deg)';
+          }
+        }
+
+        if (pullDistance > maxSpacerHeight) {
+          isRefreshing = true;
+          triggerRefresh();
+        }
+      }
+    }, { passive: false });
+
+    window.addEventListener("touchend", () => {
+      isSwipingDown = false;
+      if (!isRefreshing) resetRefresh();
+    });
+  }
+
+  function triggerRefresh() {
+    refreshDiv.style.display = 'block';
+
+    setTimeout(() => {
+      refreshDiv.style.display = 'none';
+      loadingDiv.style.display = 'block';
+    }, 300);
+
+    setTimeout(() => {
+      loadingDiv.style.display = 'none';
+      refreshDiv.style.display = 'block';
+
+      refreshImg.style.transition = 'transform 0.5s ease';
+      refreshImg.style.transform = 'rotate(0deg)';
+    }, 700);
+
+    setTimeout(resetRefresh, 800);
+  }
+
+  function resetRefresh() {
+    isRefreshing = false;
+    spacerDiv.style.height = "0";
+    refreshDiv.style.display = 'none';
+    loadingDiv.style.display = 'none';
+    refreshImg.style.transition = '';
+  }
 });
