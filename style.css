@@ -1,6 +1,9 @@
 html {
-  overflow: hidden;
-  overscroll-behavior: none;
+  overflow: auto;  /* Make sure the page can still scroll */
+}
+
+body {
+  overscroll-behavior: none; /* Disable pull-to-refresh */
 }
 
 .top img, .random img,
