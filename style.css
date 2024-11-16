@@ -60,6 +60,7 @@ body {
 	padding: 0;
 	overflow-y: scroll;
 	-webkit-tap-highlight-color: transparent;
+	overscroll-behavior: none; /* Disable pull-to-refresh */
 }
 
 .buttons-wrapper {
