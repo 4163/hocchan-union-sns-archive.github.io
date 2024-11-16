@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- 
+
+Base HTML, expandable twitter layout.
+
+Written by x4163 (x4163#8170).
+2024/10/03 to 2024/10/04 making the twitter layout+python formatting for actual tweets.
+2024/10/04 to 2024/10/05 fixed a lot of issues to actually make the tweets and images accurate.
+
+If you want to add tweets, it's not that hard, it's infinitely expandable going down or up.
+Just copy the entirity of <div class="post-contents tweet-0000"> (remove the pinned things this includes the margin-top: 10px;)
+and you're good. Tbf at this point since there's no good scrapers, Just do it manually for each tweet.
+
+As for scraping actual tweets and tweet data from x.com, I used this https://chromewebstore.google.com/detail/x-twitter-scraper/cedomiiokkcmbeoekchahgmfcppnclal.
+Scraped year by year, but I eneded up with a lot of dud data, who cares doesn't matter.
+For formatting the data you scraped (assuming you did scrape), again it shouldn't be too hard,
+just use ChatGPT (Code Copilot has been so useful for me) and try to input and format the data to the <div class="post-contents tweet-1000"> html structure and you should be good.
+I left my python scripts in the 'python_scripts' folder, do with that what you will, there's no instructions, and I did a lot things manually before using the python scripts gl figuring that out.
+
+Oh and you need to define (maxTweetIndex). It's the number of actual tweets there are, this is so the random button works.
+
+-->
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="maxTweetIndex" content="0001">
+	<title>堀江由衣STAFF (@horieyui_staff) / X</title>
+	<link rel="preload" href="svg/chevron-top.svg" as="image" type="image/svg+xml">
+	<link rel="preload" href="svg/chevron-random.svg" as="image" type="image/svg+xml">
+	<link rel="preload" href="svg/chevron-bottom.svg" as="image" type="image/svg+xml">
+	<link rel="stylesheet" href="style.css">
+	<link rel="icon" href="twitter.3.ico" type="image/x-icon" />
+	<script src="script.js" defer></script>
+	<script src="js-image-screen.js" defer></script>
+</head>
+<body>
+	<div class="buttons-wrapper">
+		<div class="logo">
+			<a href="twitter-horieyui_staff 2011-2012.html"><img src="svg/icon-svg.ea5ff4aa.svg" /></a>
+		</div>
+		<div class="top">
+			<a href="#top"><img src="svg/chevron-top.svg" alt="&lt;" style="width: 1em; height: auto; vertical-align: middle; margin-right: 16px" />
+				<span> Top</span>
+			</a>
+		</div>
+		<div class="random">
+			<a href="#random"><img src="svg/chevron-random.svg" alt="^" style="width: 1em; height: auto; vertical-align: middle; margin-right: 16px" />
+				<span> Random</span>
+			</a>
+		</div>
+		<div class="bottom">
+			<a href="#bottom"><img src="svg/chevron-bottom.svg" alt="&gt;" style="width: 1em; height: auto; vertical-align: middle; margin-right: 16px" />
+				<span> Bottom</span>
+			</a>
+		</div>
+		<div class="years active">
+			<a href="twitter-base.html"><span>2021 - 2024</span><div>...</div></a>
+		</div>
+		<div class="years">
+			<a href="twitter-base.html"><span>2017 - 2020</span><div>...</div></a>
+		</div>
+		<div class="years">
+			<a href="twitter-base.html"><span>2013 - 2016</span><div>...</div></a>
+		</div>
+	</div>
+	<div class="nav-wrapper">
+		<div class="mobile-nav">
+			<a href="#top"> <img src="svg/chevron-top.svg" alt="&lt;" /></a>
+			<a href="#random" class="random-mobile"><img src="svg/chevron-random.svg" alt="&lt;" /></a>
+			<a href="#bottom"><img src="svg/chevron-bottom.svg" alt="&lt;" /></a>
+			<a href="twitter-base.html" class="active">...</a>
+			<a href="twitter-base.html">...</a>
+			<a href="twitter-base.html">...</a>
+		</div>
+	</div>
+	<div class="container" style="overflow: hidden">
+		<div class="header-follow">
+			<span style="font-size: 20px; font-weight: bold;">堀江由衣STAFF</span><div> (2021 - 2024)</div><br />
+			<span style="color: #536471; font-size: 14px; margin-top: 2px;">5,686 posts</span>
+		</div>
+		<div id="spacer" style="height: 0px; transition: height 0.3s ease;"></div>
+		<div class="header" id="top" style="text-align: center; display: flex; justify-content: center; align-items: center;">
+			<div class="refresh" style="display: none;">
+				<img src="svg/3c4d21ee-3887-470e-b915-1e14a22d2900.svg" alt="V" style="width: 30px; height: 30px; vertical-align: middle;" />
+			</div>
+			<div style="position: relative; width: 32px; height: 32px; display: none;" class="loading">
+				<img src="svg/Dual Ring@1x-1.0s-200px-200px-bg.svg" alt="O" style="width: 32px; height: 32px; position: absolute; top: 0; left: 0;" />
+				<img src="svg/Dual Ring@1x-1.0s-200px-200px.svg" alt="O" style="width: 32px; height: 32px; position: absolute; top: 0; left: 0;" />
+			</div>
+		</div>
+		<div class="profile-banner" style="cursor: pointer;">
+			<div class="banner">
+				<img src="Media/@horieyui_staff/1500x500.jpg" />
+			</div>
+			<div class="profile-wrapper">
+				<div class="profile">
+					<img src="Media/@horieyui_staff/5TpftZpJ_400x400.jpg" />
+				</div>
+			</div>
+		</div>
+		<div class="profile-button">
+			<div class="button-profile"><img src="svg/three-dots.svg" style="width:50%; height:50%;" /></div>
+		</div>
+		<div class="bio">
+			<span style="font-size: 22px; font-weight: bold;">堀江由衣STAFF</span><br />
+			<span style="font-size: 16px; color: #536471;">@horieyui_staff</span><br />
+			<span style="font-size: 16px; margin-top: 16px;">
+				ほっちゃんこと堀江由衣のキングレコードstaffアカウントです！ 📖12th Album「文学少女の歌集Ⅲ-文学少女と夜明けのバス停-」 2024年7月3日(水)発売💿ライブツアー『堀江由衣 LIVE TOUR 2024-2025 文学少女倶楽部Ⅲ』開催決定
+				<img src="svg/1f408-200d-2b1b.svg" alt="🐈" style="width: 1em; height: auto; vertical-align: middle;" />✨
+			</span><br />
+			<span class="pink-link" style="font-size: 16px; margin-top: 12px; margin-right: 12px; margin-bottom: 12px;">
+				<a href="twitter-base.html" style="text-decoration: none;">🔗 </a><a href="twitter-base.html">horie-yui.com</a>
+			</span>
+			<span style="font-size: 16px; color: #536471; margin-top: 12px; margin-bottom: 12px;">📅 Joined April 2011</span><br />
+			<div class="links">
+				<a href="twitter-base.html">
+					<strong>25</strong>&nbsp;<span class="following" style="">Following</span>
+				</a>
+				<a href="twitter-base.html">
+					<strong>47.1K</strong>&nbsp;<span class="followers">Followers</span>
+				</a>
+			</div>
+		</div>
+		<a href="twitter-base.html" style="text-decoration: none; color: #000000;"><div class="post-section">Posts</div></a>
+		<!-- pinned tweet / base for how tweets are supposed to look -->
+		<!-- for individual tweets, class tweet-xxxx value can just have the next number from the auto generated tweet numbers, this is so it can also be selected randomly -->
+		<div class="post-contents tweet-0001">
+			<div class="content-button"><img src="svg/three-dots.svg" style="width:50%; height:50%;" /></div>
+			<a href="twitter-base.html">
+				<img src="svg/983a3778-17a3-4c8b-b3ac-9a68742abf73.svg" style="width: 1em; height: auto; vertical-align: middle; margin-left: 24px;" />
+				<div class="post-profile" style="margin-top: 10px;">
+					<img src="Media/@horieyui_staff/5TpftZpJ_400x400.jpg" />
+				</div>
+			</a>
+			<span class="tweet-contents">
+				<span style="color: #536471; font-weight: bold;">Pinned</span><br />
+				<span style="margin-bottom: 2px;" style="margin-top: 5px;"><a href="twitter-base.html"><strong>堀江由衣STAFF</strong></a></span>&nbsp;
+				<span style="color: #536471; margin-bottom: 2px; margin-top: 5px;">@horieyui_staff&nbsp;</span><span style="color: #536471; margin-bottom: 2px; margin-top: 5px;" class="date-margin">
+				<span class="date">&nbsp;·&nbsp;</span>
+				6:01&nbsp;PM&nbsp;·&nbsp;Sep&nbsp;9,&nbsp;2024&nbsp;JST</span>
+				<br />
+				<span class="pink-link"><a href="twitter-base.html">#堀江由衣</a></span><br />
+				12th Album『<span class="pink-link"><a href="twitter-base.html">#文学少女の歌集</a></span>Ⅲ-文学少女と夜明けのバス停-』収録<br />
+				<br />
+				「まじめにムリ、すきっ」のLyric Videoを公開しました❤️<br />
+				<span class="pink-link"><a href="twitter-base.html">https://youtu.be/zfjMNu7OExU</a></span><br />
+				<br />
+				ぜひご覧ください<img src="svg/1f408-200d-2b1b.svg" alt="🐈" style="width: 1em; height: auto; vertical-align: middle;" /><br />
+				<br />
+				音源配信：<span class="pink-link"><a href="twitter-base.html">https://lnk.to/bungakusyoujo3</a></span><br />
+				<br />
+				<span class="pink-link"><a href="twitter-base.html">#まじすき</a></span><br />
+				<div class="media-content">
+					<video controls>
+						<source src="Media/@horieyui_staff/media-pinned.mp4" />
+						Your browser does not support the video tag.
+					</video>
+				</div>
+				<span class="interactions">
+				<span class="comment">
+					<a>
+						<span class="icon-wrapper">
+							<img src="svg/comment-twitter-icon.svg" alt="💬" style="width: 1em; height: auto; vertical-align: middle;" />
+						</span>
+						&nbsp;2
+					</a>
+				</span>
+				<span class="retweet">
+					<a>
+						<span class="icon-wrapper">
+							<img src="svg/Ei-retweet.svg" alt="🔁" style="width: 1em; height: auto; vertical-align: middle;" />
+						</span>
+						&nbsp;71
+					</a>
+				</span>
+				<span class="like">
+					<a>
+						<span class="icon-wrapper">
+							<img src="svg/heart.svg" alt="❤" style="width: 1em; height: auto; vertical-align: middle;" />
+						</span>
+						&nbsp;210
+					</a>
+				</span>
+				</span>
+			</span>
+		</div>
+		<!-- actual tweets goes here -->
+		<div>
+		</div>
+		<div class="footer" id="bottom">
+			✧ <span class="copy">x4163#8170</span>
+		</div>
+	</div>
+</body>
+</html>
