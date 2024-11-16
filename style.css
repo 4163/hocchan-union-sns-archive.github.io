@@ -1,3 +1,8 @@
+html {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
 .top img, .random img,
 .bottom img, .years img {
 	max-height; 24px;
