@@ -782,10 +782,6 @@ span a:hover {
 }
 
 @media (pointer: coarse) and (max-width: 499px) { /* 671px */
-	html {
-	  overflow: hidden;
-	  overscroll-behavior: none;
-	}
     .buttons-wrapper {
         display: none;
     }
@@ -831,7 +827,6 @@ span a:hover {
 	.banner {
 		aspect-ratio: 497 / 165.66;
 	}
-
 }
 
 @media (pointer: coarse) and (max-width: 374.25px) {
