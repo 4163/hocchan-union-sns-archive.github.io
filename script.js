@@ -78,6 +78,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const mediaQuery = window.matchMedia("(pointer: coarse) and (max-width: 499px)");
 
+	if (mediaQuery.matches) {
+	  document.addEventListener('touchmove', function(event) {
+		event.preventDefault();
+	  }, { passive: false });
+	}
+
   const applyMobileNavStylesIfRequired = () => {
     if (mediaQuery.matches && headerFollow && mobileNav) {
       mobileNav.style.opacity = '1';
