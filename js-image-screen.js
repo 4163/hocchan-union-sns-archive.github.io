@@ -61,18 +61,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
 		function updateImageSize(e) {
 			if (e.matches) {
-				// When the media query matches, set the image to full viewport width
-				lightboxImage.style.width = '100vw';
+				// Coarse pointer devices (e.g., touchscreens)
+				lightboxImage.style.width = '100vw'; // Set to full viewport width
 			} else {
-				// If the media query does not match, check if the image's natural width exceeds the viewport width
-				if (lightboxImage.naturalWidth > window.innerWidth) {
-					lightboxImage.style.width = '100vw'; // Set to full viewport width if the image is too large
-				} else {
-					lightboxImage.style.width = ''; // Restore default width
-				}
+				// Fine pointer devices (e.g., desktops or larger screens)
+				lightboxImage.style.width = ''; // Reset inline width styles
+				lightboxImage.style.maxWidth = '100%'; // Ensure it scales down with viewport
+				lightboxImage.style.height = 'auto'; // Maintain aspect ratio
 			}
 		}
-        
+
         updateImageSize(coarsePointerMediaQuery);
         coarsePointerMediaQuery.addEventListener('change', updateImageSize);
 
