@@ -837,12 +837,14 @@ span a:hover {
 /* Adjust for high-DPR devices to compensate for small sizes */
 @media (min-resolution: 2dppx) {
     .lightbox-image {
-        max-height: calc(88.6vh / 1.2); /* Increase by 20% for dpr: 2 */
+        max-height: calc(88.6vh / 1.1); /* Decrease by 20% for dpr: 2 */
+		transform: translateY(25%);
     }
 }
 @media (min-resolution: 3dppx) {
     .lightbox-image {
-        max-height: calc(88.6vh / 1.4); /* Increase by 40% for dpr: 3 */
+        max-height: calc(88.6vh / 1.2); /* Decrease by 40% for dpr: 3 */
+		transform: translateY(25%);
     }
 }
 
