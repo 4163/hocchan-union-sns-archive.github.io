@@ -521,7 +521,6 @@ span a:hover {
 }
 
 .img-wrapper {
-    flex-grow: 1; /* Takes up remaining space between top and bottom */
     display: flex;
     justify-content: center;
     align-items: center; /* Centers the image vertically and horizontally */
