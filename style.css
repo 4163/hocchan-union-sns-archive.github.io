@@ -520,8 +520,9 @@ span a:hover {
 }
 
 .img-wrapper {
-	position: relative;
-	max-height: calc(100% - 96px);
+	max-height: calc(100vh - 96px);
+	display: flex;
+	justify-content: center;
 }
 
 .lightbox-image {
