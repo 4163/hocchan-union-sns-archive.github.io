@@ -180,4 +180,17 @@ document.addEventListener('DOMContentLoaded', function () {
     function clearLightboxState() {
         localStorage.removeItem(`lightboxState_${currentPage}`);
     }
+	
+	// Update CSS custom property for correct mobile viewport height
+	function updateViewportHeight() {
+		const vh = window.innerHeight * 0.01; // Get 1% of the viewport height
+		document.documentElement.style.setProperty('--vh', `${vh}px`);
+	}
+
+	// Initial update
+	updateViewportHeight();
+
+	// Update on resize
+	window.addEventListener('resize', updateViewportHeight);
+
 });

@@ -505,20 +505,26 @@ span a:hover {
 
 /* JS Image Section */
 
+:root {
+	/* Dynamically calculate the actual viewport height for mobile */
+	--vh: 1vh;
+}
+
 .lightbox-overlay {
 	position: fixed;
 	top: 0;
 	left: 0;
 	width: 100vw;
-	height: 100vh;
+	height: calc(var(--vh, 1vh) * 100); /* Use the dynamically calculated height */
 	background-color: rgba(0, 0, 0, 0.9412);
 	display: flex;
-	flex-direction: column-reverse;
+	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
 	z-index: 999;
 	overflow: hidden;
 }
+
 
 .img-wrapper {
     display: flex;
