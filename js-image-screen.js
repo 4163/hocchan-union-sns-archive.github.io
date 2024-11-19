@@ -7,16 +7,16 @@ document.addEventListener('DOMContentLoaded', function () {
         const interactions = tweet.querySelector('.interactions');
 
         if (mediaContent && interactions) {
-            const commentCount = interactions.querySelector('.comment a').textContent.trim();
-            const retweetCount = interactions.querySelector('.retweet a').textContent.trim();
-            const likeCount = interactions.querySelector('.like a').textContent.trim();
-
             mediaContent.querySelectorAll('img').forEach(img => {
                 img.addEventListener('click', function () {
                     if (!document.querySelector('.lightbox-overlay')) {
+                        const commentCount = interactions.querySelector('.comment a').textContent.trim();
+                        const retweetCount = interactions.querySelector('.retweet a').textContent.trim();
+                        const likeCount = interactions.querySelector('.like a').textContent.trim();
+
                         createLightbox(img, commentCount, retweetCount, likeCount);
                         saveLightboxState(currentPage, img.src, commentCount, retweetCount, likeCount);
-                        preventScroll(true); 
+                        preventScroll(true);
                     }
                 });
             });
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
             tweet.querySelectorAll('img').forEach(img => {
                 img.addEventListener('click', function () {
                     if (!document.querySelector('.lightbox-overlay')) {
-                        createLightbox(img, '', '', ''); 
+                        createLightbox(img, '', '', '');
                         preventScroll(true);
                     }
                 });
@@ -46,30 +46,32 @@ document.addEventListener('DOMContentLoaded', function () {
     function createLightbox(img, commentCount, retweetCount, likeCount) {
         const lightbox = document.createElement('div');
         lightbox.classList.add('lightbox-overlay');
-        
+
         lightbox.addEventListener('click', function (event) {
             if (event.target === lightbox) {
                 closeLightbox(lightbox);
             }
         });
 
+        // Create wrapper for the lightbox image
+        const wrapper = document.createElement('div');
+        wrapper.classList.add('img-wrapper');
+
         const lightboxImage = document.createElement('img');
         lightboxImage.src = img.src;
         lightboxImage.classList.add('lightbox-image');
-        
+
+        wrapper.appendChild(lightboxImage); // Append the image to the wrapper
+        lightbox.appendChild(wrapper); // Append the wrapper to the lightbox
+
         const coarsePointerMediaQuery = window.matchMedia('(pointer: coarse) and (max-width: 671px)');
 
-		function updateImageSize() {
-			// For all devices, ensure the image scales properly
-			lightboxImage.style.width = ''; // Reset inline width styles
-			lightboxImage.style.maxWidth = '100%'; // Ensure it scales down with viewport
-			lightboxImage.style.height = 'auto'; // Maintain aspect ratio
-		}
+        function updateImageSize() {
+            lightboxImage.style.width = '';
+        }
 
         updateImageSize(coarsePointerMediaQuery);
         coarsePointerMediaQuery.addEventListener('change', updateImageSize);
-
-        lightbox.appendChild(lightboxImage);
 
         const interactionsContainer = document.createElement('div');
         interactionsContainer.classList.add('js-interactions');
