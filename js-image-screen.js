@@ -53,6 +53,11 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
 
+        // Add the new header div
+        const header = document.createElement('div');
+        header.classList.add('js-header');
+        lightbox.appendChild(header);
+
         // Create wrapper for the lightbox image
         const wrapper = document.createElement('div');
         wrapper.classList.add('img-wrapper');
