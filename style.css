@@ -519,10 +519,14 @@ span a:hover {
 	z-index: 999;
 }
 
+.img-wrapper {
+	position: relative;
+	max-height: calc(100% - 96px);
+}
+
 .lightbox-image {
-    max-height: calc(100% - 96px); /* Sets the max height to 96px (48px top, bottom) less than the viewport height */
-    width: auto;
-    display: block;
+	width: auto;
+	height: 100%;
     margin: auto;
 }
 
