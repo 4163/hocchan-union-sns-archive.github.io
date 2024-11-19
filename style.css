@@ -523,7 +523,7 @@ span a:hover {
     max-height: calc(100vh - 96px); /* Sets the max height to 96px (48px top, bottom) less than the viewport height, for interaction and close button adjustment*/
     width: auto;
     display: block;
-    margin: 0 auto;
+    margin: auto;
 }
 
 .js-interactions {
@@ -835,21 +835,6 @@ span a:hover {
 	.profile {
 		border: 2px solid #ffffff;
 	}
-}
-
-/* Adjust for higher DPRs */
-@media screen and (min-resolution: 2dppx), 
-       screen and (-webkit-min-device-pixel-ratio: 2) {
-    .lightbox-image {
-        max-height: calc(100vh - 128px); /* Adjust for 2 DPR */
-    }
-}
-
-@media screen and (min-resolution: 3dppx), 
-       screen and (-webkit-min-device-pixel-ratio: 3) {
-    .lightbox-image {
-        max-height: calc(100vh - 160px); /* Adjust for 3 DPR */
-    }
 }
 
 /*============================*/
