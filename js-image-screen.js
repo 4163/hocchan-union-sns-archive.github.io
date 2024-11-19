@@ -59,16 +59,11 @@ document.addEventListener('DOMContentLoaded', function () {
         
         const coarsePointerMediaQuery = window.matchMedia('(pointer: coarse) and (max-width: 671px)');
 
-		function updateImageSize(e) {
-			if (e.matches) {
-				// Coarse pointer devices (e.g., touchscreens)
-				lightboxImage.style.width = '100vw'; // Set to full viewport width
-			} else {
-				// Fine pointer devices (e.g., desktops or larger screens)
-				lightboxImage.style.width = ''; // Reset inline width styles
-				lightboxImage.style.maxWidth = '100%'; // Ensure it scales down with viewport
-				lightboxImage.style.height = 'auto'; // Maintain aspect ratio
-			}
+		function updateImageSize() {
+			// For all devices, ensure the image scales properly
+			lightboxImage.style.width = ''; // Reset inline width styles
+			lightboxImage.style.maxWidth = '100%'; // Ensure it scales down with viewport
+			lightboxImage.style.height = 'auto'; // Maintain aspect ratio
 		}
 
         updateImageSize(coarsePointerMediaQuery);
