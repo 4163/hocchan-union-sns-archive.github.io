@@ -838,13 +838,13 @@ span a:hover {
 @media (min-resolution: 2dppx) {
     .lightbox-image {
         max-height: calc(88.6vh / 1.1); /* Decrease by 20% for dpr: 2 */
-		transform: translateY(25%);
+		transform: translateY(-10%);
     }
 }
 @media (min-resolution: 3dppx) {
     .lightbox-image {
         max-height: calc(88.6vh / 1.2); /* Decrease by 40% for dpr: 3 */
-		transform: translateY(25%);
+		transform: translateY(-20%);
     }
 }
 
