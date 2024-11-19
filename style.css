@@ -520,7 +520,7 @@ span a:hover {
 }
 
 .lightbox-image {
-    max-height: 90vh; /* Sets the max height to 96px (48px top, bottom) less than the viewport height */
+    max-height: calc(100% - 96px); /* Sets the max height to 96px (48px top, bottom) less than the viewport height */
     width: auto;
     display: block;
     margin: 0 auto;
@@ -829,25 +829,7 @@ span a:hover {
 	.banner {
 		aspect-ratio: 497 / 165.66;
 	}
-	.lightbox-image {
-		max-height: 88.6vh; /* Sets the max height to 96px (48px top, bottom) less than the viewport height */
-	}
 }
-
-/* Adjust for high-DPR devices to compensate for small sizes */
-@media (min-resolution: 2dppx) {
-    .lightbox-image {
-        max-height: calc(88.6vh / 1.1); /* Decrease by 20% for dpr: 2 */
-		transform: translateY(-10%);
-    }
-}
-@media (min-resolution: 3dppx) {
-    .lightbox-image {
-        max-height: calc(88.6vh / 1.2); /* Decrease by 40% for dpr: 3 */
-		transform: translateY(-20%);
-    }
-}
-
 
 @media (pointer: coarse) and (max-width: 374.25px) {
 	.profile {
