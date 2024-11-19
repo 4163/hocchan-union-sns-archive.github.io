@@ -549,7 +549,6 @@ span a:hover {
     flex-shrink: 0; /* Prevent shrinking */
     width: auto; /* Allows it to size based on its content */
     height: 48px; /* Maintains a fixed height */
-    position: relative; /* Keeps it in the document flow */
     margin: 0 auto; /* Centers the element horizontally */
 }
 
