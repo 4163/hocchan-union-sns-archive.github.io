@@ -357,3 +357,34 @@ document.addEventListener('DOMContentLoaded', function () {
     refreshImg.style.transition = '';
   }
 });
+
+let isCopying = false;
+
+document.querySelector('.footer').addEventListener('click', function(event) {
+  if (isCopying) return;
+  isCopying = true;
+
+  const copyText = document.querySelector('.copy').textContent;
+
+  navigator.clipboard.writeText(copyText).then(function() {
+    const copiedMessage = document.createElement('div');
+    copiedMessage.textContent = 'Copied!';
+    copiedMessage.classList.add('copied-message');
+    document.body.appendChild(copiedMessage);
+
+    copiedMessage.style.left = event.pageX + 'px';
+    copiedMessage.style.top = event.pageY + 'px';
+    copiedMessage.style.opacity = '1';
+
+    setTimeout(function() {
+      copiedMessage.style.opacity = '0';
+      setTimeout(function() {
+        document.body.removeChild(copiedMessage);
+        isCopying = false;
+      }, 200);
+    }, 400);
+  }).catch(function() {
+    console.error('Failed to copy text: ', copyText);
+    isCopying = false;
+  });
+});
