@@ -82,9 +82,9 @@ document.addEventListener('DOMContentLoaded', function () {
         interactionsContainer.classList.add('js-interactions');
 
         if (commentCount || retweetCount || likeCount) {
-            const commentBox = createInteractionBox('svg/comment-twitter-icon-white.svg', '💬', commentCount, 'js-comments');
-            const retweetBox = createInteractionBox('svg/Ei-retweet-white.svg', '🔁', retweetCount, 'js-retweets');
-            const likeBox = createInteractionBox('svg/heart-white.svg', '❤', likeCount, 'js-likes');
+            const commentBox = createInteractionBox('svgs/comment-twitter-icon-white.svg', '💬', commentCount, 'js-comments');
+            const retweetBox = createInteractionBox('svgs/Ei-retweet-white.svg', '🔁', retweetCount, 'js-retweets');
+            const likeBox = createInteractionBox('svgs/heart-white.svg', '❤', likeCount, 'js-likes');
 
             if (coarsePointerMediaQuery.matches) {
                 interactionsContainer.style.width = '100vw';

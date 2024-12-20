@@ -598,7 +598,7 @@ span a:hover {
 	background-color: #040404;
 	border: none;
 	cursor: pointer;
-	background-image: url("./svg/86789a0e-3c5d-4401-bb21-e215c9b93eae.svg");
+	background-image: url("./svgs/86789a0e-3c5d-4401-bb21-e215c9b93eae.svg");
 	background-size: 55%; /* Shrinks the SVG to 60% of the button size */
 	background-position: center; /* Centers the SVG within the button */
 	background-repeat: no-repeat; /* Prevents tiling */
