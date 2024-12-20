@@ -83,7 +83,7 @@ def format_text(text):
     
     # Replace specific emojis
     wrapped_text = wrapped_text.replace(
-        "🐈‍⬛", '<img src="svg/1f408-200d-2b1b.svg" alt="🐈" style="width: 1em; height: auto; vertical-align: middle;" />'
+        "🐈‍⬛", '<img src="svgs/1f408-200d-2b1b.svg" alt="🐈" style="width: 1em; height: auto; vertical-align: middle;" />'
     )
     
     # Handle 'http' links after 'https' is wrapped, to avoid conflicts
@@ -139,7 +139,7 @@ for index, row in df.iterrows():
                     <span class="comment">
                         <a>
                             <span class="icon-wrapper">
-                                <img src="svg/comment-twitter-icon.svg" alt="💬" style="width: 1em; height: auto; vertical-align: middle;" />
+                                <img src="svgs/comment-twitter-icon.svg" alt="💬" style="width: 1em; height: auto; vertical-align: middle;" />
                             </span>
                             &nbsp;{column_f}
                         </a>
@@ -147,7 +147,7 @@ for index, row in df.iterrows():
                     <span class="retweet">
                         <a>
                             <span class="icon-wrapper">
-                                <img src="svg/Ei-retweet.svg" alt="🔁" style="width: 1em; height: auto; vertical-align: middle;" />
+                                <img src="svgs/Ei-retweet.svg" alt="🔁" style="width: 1em; height: auto; vertical-align: middle;" />
                             </span>
                             &nbsp;{column_e}
                         </a>
@@ -155,7 +155,7 @@ for index, row in df.iterrows():
                     <span class="like">
                         <a>
                             <span class="icon-wrapper">
-                                <img src="svg/heart.svg" alt="❤" style="width: 1em; height: auto; vertical-align: middle;" />
+                                <img src="svgs/heart.svg" alt="❤" style="width: 1em; height: auto; vertical-align: middle;" />
                             </span>
                             &nbsp;{column_d}
                         </a>
@@ -167,7 +167,7 @@ for index, row in df.iterrows():
     # Step 7: Wrap the tweet-contents with the new structure
     full_html_structure = f'''
     <div class="post-contents tweet-{tweet_count:04d}">
-        <div class="content-button"><img src="svg/three-dots.svg" style="width:50%; height:50%;" /></div>
+        <div class="content-button"><img src="svgs/three-dots.svg" style="width:50%; height:50%;" /></div>
         <a href="twitter-10th_anniv.html">
             <div class="post-profile">
                 <img src="Media/@10th_anniv/VqIaiLiV_400x400.jpg" />
