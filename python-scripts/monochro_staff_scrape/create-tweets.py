@@ -83,7 +83,7 @@ def format_text(text):
     
     # Replace specific emojis
     wrapped_text = wrapped_text.replace(
-        "🐈‍⬛", '<img src="svg/1f408-200d-2b1b.svg" alt="🐈" style="width: 1em; height: auto; vertical-align: middle;" />'
+        "🐈‍⬛", '<img src="svgs/1f408-200d-2b1b.svg" alt="🐈" style="width: 1em; height: auto; vertical-align: middle;" />'
     )
     
     # Handle 'http' links after 'https' is wrapped, to avoid conflicts
@@ -129,8 +129,8 @@ for index, row in df.iterrows():
     tweet_contents = f'''
             <span class="tweet-contents">
                 <span style="margin-bottom: 2px;"><a href="twitter-monochro_staff.html"><strong>ミス・モノクロームSTAFF</strong></a></span>&nbsp;
-                <span style="font-size: 13.5px; color: #536471; margin-bottom: 2px;">@monochro_staff&nbsp;</span><span style="color: #536471; margin-bottom: 2px; margin-top: 5px;" class="date-margin">
-                <span class="date">&nbsp;·&nbsp;</span>
+                <br><span style="font-size: 12px; font-size: 13.5px; color: #536471; margin-bottom: 2px;">@monochro_staff&nbsp;</span><span style="color: #536471; margin-bottom: 2px; margin-top: 5px;" class="date-margin">
+                &nbsp;·&nbsp;
                 {column_a}</span>
                 <br>
                 {column_c}
@@ -139,7 +139,7 @@ for index, row in df.iterrows():
                     <span class="comment">
                         <a>
                             <span class="icon-wrapper">
-                                <img src="svg/comment-twitter-icon.svg" alt="💬" style="width: 1em; height: auto; vertical-align: middle;" />
+                                <img src="svgs/comment-twitter-icon.svg" alt="💬" style="width: 1em; height: auto; vertical-align: middle;" />
                             </span>
                             &nbsp;{column_f}
                         </a>
@@ -147,7 +147,7 @@ for index, row in df.iterrows():
                     <span class="retweet">
                         <a>
                             <span class="icon-wrapper">
-                                <img src="svg/Ei-retweet.svg" alt="🔁" style="width: 1em; height: auto; vertical-align: middle;" />
+                                <img src="svgs/Ei-retweet.svg" alt="🔁" style="width: 1em; height: auto; vertical-align: middle;" />
                             </span>
                             &nbsp;{column_e}
                         </a>
@@ -155,7 +155,7 @@ for index, row in df.iterrows():
                     <span class="like">
                         <a>
                             <span class="icon-wrapper">
-                                <img src="svg/heart.svg" alt="❤" style="width: 1em; height: auto; vertical-align: middle;" />
+                                <img src="svgs/heart.svg" alt="❤" style="width: 1em; height: auto; vertical-align: middle;" />
                             </span>
                             &nbsp;{column_d}
                         </a>
@@ -167,7 +167,7 @@ for index, row in df.iterrows():
     # Step 7: Wrap the tweet-contents with the new structure
     full_html_structure = f'''
     <div class="post-contents tweet-{tweet_count:04d}">
-        <div class="content-button"><img src="svg/three-dots.svg" style="width:50%; height:50%;" /></div>
+        <div class="content-button"><img src="svgs/three-dots.svg" style="width:50%; height:50%;" /></div>
         <a href="twitter-monochro_staff.html">
             <div class="post-profile">
                 <img src="Media/@monochro_staff/ZB1SEsrq_400x400.jpg" />
